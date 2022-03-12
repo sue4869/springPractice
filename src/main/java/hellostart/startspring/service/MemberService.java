@@ -2,16 +2,24 @@ package hellostart.startspring.service;
 
 import hellostart.startspring.domain.Member;
 import hellostart.startspring.repository.MemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+//@를 이용하는 것 :  컴포넌트 스캔과 자동 의존관계 설정하는 법 (스프링빈을 등록하는 방법1)
+// 컴포넌트 : @Service안에 들어가보면 @Component라 선언되어있다. -> 컨포넌트 스캔
+// @Component가 있으면 스프링이 올라올때 스프링 객체 방식으로 생성해서 빈으로 자동 등록된다.
+// 같은 패키지 내에 있어야만 컴포넌트 스캔의 대상이 된다.
+@Service
 public class MemberService {
 
     private final MemberRepository memberRepository ;
 
     // MemberService입장에서 직접 new하지 않고,
     // 외부에서 주입해서 만들어주도록 했으니 -> DI 라고 한다.
+    @Autowired // Autowired는 연관관계를 의미한다.
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
