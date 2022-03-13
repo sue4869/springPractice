@@ -4,11 +4,13 @@ import hellostart.startspring.domain.Member;
 import hellostart.startspring.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
-
+//jpa를 사용하려면 @Transactional을 선언해야한다.
+@Transactional
 public class MemberService {
 
     private final MemberRepository memberRepository ;
